@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hai REVA ❤️</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* toggle halaman */
+.page{
+    display:none;
+}
+.page.active{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HALAMAN UTAMA ================= -->
+<div id="homePage" class="page active">
+
+<div class="container">
+
+    <h1 class="title">❤️ HAI INI REPUYY :</h1>
+
+    <p class="main-text">
+        Aku cuma mau bilang...<br><br>
+        Kadang perasaan itu aneh ya hehehhe baru juga kenal sudah nyaman,<br>
+        Semoga ada kesempatan buat kita bersama wkwk😌
+    </p>
+
+    <!-- GALERI FOTO -->
+    <div class="photo-gallery">
+        <img src="w.jpeg" alt="foto1">
+        <img src="u.jpeg" alt="foto2">
+        <img src="r.jpeg" alt="foto3">
+        <img src="p.jpeg" alt="foto4">
+    </div>
+
+    <div class="quotes">
+        <p>💔 "Friendzone itu bukan gagal mencintai, tapi berhasil menyembunyikan rasa."</p>
+        <p>🌱 "Kalau dia bahagia sebagai teman, mungkin itu peranku untuk sekarang."</p>
+        <p>✨ "Cinta tak harus memiliki, kadang cukup melihat dia tersenyum."</p>
+        <p>🫶 "Walau cuma teman, doaku tetap kamu."</p>
+        <p>🚶 "Jika suatu hari kamu sadar, aku masih di sini… sebagai teman terbaikmu."</p>
+        <p>🚶 "Jika ada kesempatan aku dan kamu bisa sama sama yaaaaaa...."</p>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn" onclick="showLove()">Klik Aku</button>
+        <button class="btn btn-secondary" onclick="openProfile()">Lihat Profil</button>
+    </div>
+
+</div>
+</div>
+
+<!-- ================= HALAMAN PROFIL ================= -->
+<div id="profilePage" class="page">
+
+<div class="container">
+
+    <h1 class="title">👤 Profil Orang Lucu</h1>
+
+    <div class="photo-frame">
+        <img id="preview" src="q.jpeg" alt="Foto">
+    </div>
+
+    <p class="profile-text">
+        Kamu adalah teman terbaik yang pernah aku punya.<br>
+        Walau status kita friendzone…<br>
+        tapi kamu tetap spesial 💖
+    </p>
+
+
+    <div class="btn-group">
+        <button class="btn" onclick="backHome()">Kembali</button>
+    </div>
+
+</div>
+</div>
+
+<!-- ================= MUSIC ================= -->
+<audio id="bgMusic" loop preload="auto" autoplay>
+    <source src="romantis.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// ================= ALERT =================
+function showLove(){
+    alert("Aku sayang kamu… tapi kita temenan dulu yaaaa PLISS JANGAN SAMA YANG LAIN DULU 😭💕");
+}
+
+// ================= PINDAH HALAMAN =================
+function openProfile(){
+    document.getElementById("homePage").classList.remove("active");
+    document.getElementById("profilePage").classList.add("active");
+}
+
+function backHome(){
+    document.getElementById("profilePage").classList.remove("active");
+    document.getElementById("homePage").classList.add("active");
+}
+
+// ================= MUSIC AUTO =================
+const music = document.getElementById("bgMusic");
+music.volume = 0.4;
+
+window.addEventListener("load", () => {
+    music.play().catch(() => {
+        document.addEventListener("click", () => {
+            music.play().catch(()=>{});
+        }, { once: true });
+    });
+});
+
+// ================= PREVIEW FOTO =================
+function loadPhoto(event){
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(event.target.files[0]);
+}
+
+// ================= HATI BETERBANGAN =================
+function createHeartFloat(){
+    const heart = document.createElement("div");
+    heart.className = "heart-float";
+    heart.innerHTML = "💗";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*4 + 4) + "s";
+    heart.style.fontSize = (Math.random()*10 + 14) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeartFloat, 900);
+</script>
+
+</body>
+</html>
